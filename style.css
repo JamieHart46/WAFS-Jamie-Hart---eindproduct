@@ -1,0 +1,313 @@
+body {
+  font-family: system-ui;
+  background: rgb(229, 245, 227);
+  color: black;
+  margin: 0;
+}
+
+* {
+	box-sizing:border-box;
+}
+
+/* Code van Sanne*/
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  margin: 10px;
+}
+
+/* Bebas neue font van google fonts (https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap)*/
+
+	
+p {
+	padding: 15px;
+}	
+
+/* HEADER */
+
+header {
+  background-color: mediumseagreen;
+  box-shadow: 0 6px 8px 10px rgba(0, 0, 0, 0.1);
+  height: auto;
+
+ /* Box-shadow van Chatgpt. Chatgtp gaf box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+ Ik heb hierna toegevoegd om een duidelijkere shadow te krijgen en dit op meerdere
+ plekken in de css toegepast*/
+
+  color: white;
+  padding-left: 10px;
+  text-align: left;
+  align-items: center;
+  font-size: 30px;
+
+  /* Align-items zet de boxes van de navigatie verticaal in het midden van de header*/
+
+  line-height: 60px;
+  display: flex;
+  justify-content: space-evenly;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Alles met flex/flexbox met behulp van Sanne en Vasilis en later CSS-tricks.com 
+(https://css-tricks.com/snippets/css/a-guide-to-flexbox/)*/
+
+.navigation a {
+  display: inline-block;
+  border: 3px solid white;
+  border-radius: 5px;
+  background-color: mediumseagreen;
+  box-shadow: 0 6px 8px 10px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  height: 40px;
+
+  color: white;
+	text-align: center;
+  line-height: 30px;
+  margin: 0 15px;
+  text-decoration: none;
+
+  transition: 0,5s ease-in-out;
+	}
+
+  .navigation a:hover {
+    transform: translateY(-10px);
+  }
+  /* De bovenstaande regels binnen header en navigation li, zorgen dat de naam die in de header heb gezet en de navigatie die is gemaakt heb dmv flex naast 
+  en uit elkaar staan met gelijke hoeveelheid padding aan beide kanten en natuurlijk alle styling voor de border, tekststyle, kleuren, etc. */
+
+header nav {
+	display:flex;
+	flex-wrap: wrap;
+	gap:1em;
+}
+
+/* MAIN */
+
+div .homesection {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  box-shadow: 0 4px 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+#home {
+  scroll-margin-top: 140px ;
+}
+
+/* section:nth-of-type(2),
+section:nth-of-type(4){
+	flex-direction:row-reverse;
+} */
+
+section:nth-of-type(even) {
+	flex-direction:row-reverse;
+}
+
+/* Maakt het dat elk even nummer section omgekeerd is in de flex row, dus row 
+2 en 4 hebben links de afbeelding en rechts het tekstblok. */
+
+/* Code voor de sections en grid layout van Sanne.*/
+
+section div {
+	flex-basis:0;
+	flex-grow:2;
+
+	border:solid 1px black;
+	border-radius:1em;
+  background-color: white;
+	box-shadow: 0 4px 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+section ul {
+	flex-basis:0;
+	flex-grow:1;
+	
+	display:grid;
+	
+	margin:0;
+	padding:0;
+	list-style-type:"";
+}
+
+section li {
+	grid-area:1/1;
+}
+
+/* zorgt dat de afbeeldingen per section op elkaar staan zodat er maar 1 tegelijk zichtbaar is,
+ook door Sanne*/
+
+section {
+	display:flex;
+	gap:1em;
+	padding:60px;
+  padding-left: 110px;
+  padding-right: 110px;
+	line-height: 20px;
+  scroll-margin-top: 100px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/*Images*/
+
+.homeimg {
+  display: flex;
+  justify-content: space-evenly;
+  align-self: center;
+  list-style: none;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+.homeimg li {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Flex display voor de listitems, binnen de de display van de hele class zorgt ervoor dat 
+de afbeeldingen in het midden kunnen komen te staan met de justify-content: center. Zonder deze tweede
+display: flex stonden de afbeeldingen naar links alligned.*/
+
+.homeimg img {
+  width: 60%;
+  border-radius: 1em;
+  box-shadow: 0 6px 8px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+section img {
+	max-width:100%;
+	border-radius: 1em;
+  border: 1px solid white;
+  box-shadow: 0 6px 8px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+}
+
+/* De opacity: 0 zorgt dat alle afbeeldingen niet in beeld zijn in de standaart situatie.*/ 
+
+li:first-of-type img {
+  opacity: 1;
+} 
+
+/* De first of type is zodat de eerste afbeelding die in een li zit elke keer in beeld is,
+zodat het beeld niet leeg is voordat er een target geselecteerd wordt.*/
+
+img:target {
+  opacity:1;
+  z-index: 2;
+  scroll-margin-top: 160px;
+}
+
+.fotolijst {
+  transition: 0.3s ease-in-out;
+}
+
+/* Laat de afbeelding langzaam in en uit de transformatie gaan wanneer deze gebruikt wordt.*/
+
+.fotolijst:hover {
+  transform: scale(1.1)
+}
+
+/* Als er boven een van de afbeeldingen gehoverd wordt groeien deze een klein beetje.*/
+
+.foto-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: end;
+
+  border: 2px solid white;
+  border-radius: 0.3em;
+  background-color:  mediumseagreen;
+  box-shadow: 0 6px 8px 10px rgba(0, 0, 0, 0.1);
+  width: 30px;
+  padding-right: 6px;
+}
+
+.foto-nav a {
+  transition: 0.2s ease-in-out;
+}
+
+.foto-nav a:hover {
+  transform: scale(1.5)
+}
+
+/* De cijfers in de navigatie balk worden groter als je eroverheen hovert, zodat het zo duidelijk wordt dat deze clickbaar zijn.*/
+
+.foto-nav a {
+  color: white;
+  font-weight: bolder;
+}
+
+section .homeblock {
+	padding-top: 130px;
+}
+
+/* Deze padding is nodig, omdat de header sticky is en deze section anders achter de header terecht komt
+en nu is deze onder de header te zien.*/
+
+/*FONTSTYLES*/
+
+.homesection h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 110px;
+  margin: 10px;
+  text-align: center;
+}
+
+.homesection p {
+  text-align: center;
+  padding: 0 140px;
+}
+
+.persoongegevens {
+  display: flex;
+  flex-direction: column;
+
+  padding-left: 15px;
+}
+
+/* Display: flex en flex-direction zorgen ervoor dat de li's in deze list niet overlappen
+en onder elkaar komen te staan inplaats van naast elkaar. Dit omdat bij section li, de grid 1/1 zorgt dat listitems
+bovenopelkaar worden afgebeeld in de grid en dit draait dat terug voor de .persoongegevens class.*/
+
+/* FOOTER */
+	
+footer {
+	list-style: none;
+  font-weight: bolder;
+	color: white;
+  text-align: left;
+
+  background-color: mediumseagreen;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 6px 8px 10px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+footer img {
+  max-width: 30%;
+  max-height: 30%;
+  align-self: end;
+  padding-bottom: 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll behavior: smooth zorgt ervoor dat wanneer een link in de navigatie geclicked wordt, 
+de pagina automatisch scrolled naar de target op de pagina die geselecteerd is.*/
